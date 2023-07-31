@@ -57,7 +57,7 @@
         <form action="/quicknotes" method="post">
             <!-- Input fields for adding a new note -->
             <input type="text" name="note_text" placeholder="Take a note..." style="color: grey; width: 400px">
-            <input type="hidden" name="command" value="ADD">
+            <input type="hidden" name="action" value="ADD">
             <select name="note_color">
                 <!-- Options for note color selection -->
                 <option value="yellow">Yellow</option>
@@ -75,7 +75,7 @@
             <p>{{ note.text }}</p>
             <!-- Form for deleting a note -->
             <form action="/quicknotes/{{ loop.index0 }}" method="POST">
-                <input type="hidden" name="command" value="DELETE">
+                <input type="hidden" name="action" value="DELETE">
                 <button type="submit">Delete</button>
             </form>
         </div>

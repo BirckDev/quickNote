@@ -25,7 +25,7 @@ def index():
 
 @app.route('/quicknotes/<int:note_id>', methods=['POST'])
 def delete_note(note_id):
-    command = request.form.get('command')
+    command = request.form.get('action')
     if command == 'DELETE':
         notes = get_notes()
         del notes[note_id]
@@ -35,7 +35,7 @@ def delete_note(note_id):
 
 @app.route('/quicknotes/', methods=['POST'])
 def add_note():
-    command = request.form.get('command')
+    command = request.form.get('action')
     if command == 'ADD':
         note_text = request.form['note_text']
         note_color = request.form['note_color']
@@ -44,6 +44,7 @@ def add_note():
                       'color': note_color})
         save_notes(notes)
     return index()
+
 
 def save_notes(notes):
     with open(FILENAME, 'w') as file:
